@@ -30,16 +30,19 @@ html {
 *,
 *::before,
 *::after {
+  padding: 0;
+  margin: 0;
   box-sizing: inherit; }
 
 body {
-  padding: 0;
-  margin: 0;
   font-family: 'Public Sans', sans-serif;
   line-height: 1.3;
   color: #9698a6;
   font-size: 1.125rem;
   font-weight: 300; }
+  @media (min-width: 64em) {
+    body {
+      font-size: 1.25rem; } }
   body.no-scroll {
     overflow: hidden; }
 
@@ -52,27 +55,67 @@ a:hover {
   a:hover .btn {
     color: white; }
 
+h1 {
+  font-size: 2.31rem;
+  color: #2d314d;
+  font-weight: 300;
+  line-height: 1.15; }
+  @media (min-width: 64em) {
+    h1 {
+      font-size: 3.25rem; } }
+
+p {
+  line-height: 1.5; }
+
 .container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem; }
+  max-width: 69.375rem;
+  margin: 0 auto; }
+  .container--pda {
+    padding-top: 2.25rem;
+    padding-right: 1.5rem;
+    padding-bottom: 2.25rem;
+    padding-left: 1.5rem; }
+  .container--pdx {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem; }
+  .container--pd-y {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem; }
+  .container--pdt {
+    padding-top: 2.25rem; }
+  .container--pdr {
+    padding-right: 1.5rem; }
+  .container--pdb {
+    padding-bottom: 2.25rem; }
+  .container--pdl {
+    padding-left: 1.5rem; }
 
 .flex {
   display: flex; }
+  .flex-col {
+    display: flex;
+    flex-direction: column; }
   .flex-jc-sb {
     justify-content: space-between; }
   .flex-jc-c {
     justify-content: center; }
   .flex-ai-c {
     align-items: center; }
+  .flex-ai-fs {
+    align-items: flex-start; }
 
 .btn {
+  display: inline-block;
   padding: 0.875rem 2.1875rem;
   background: linear-gradient(to right, #31d35c, #2bb7da);
   border-radius: 50px;
   cursor: pointer;
   font-weight: 400;
   font-size: 0.875rem;
-  color: white; }
+  color: white;
+  transition: opacity 300ms ease-in-out; }
+  .btn:hover {
+    opacity: 0.75; }
 
 @media (max-width: 63.9375em) {
   .hide-for-mobile {
@@ -83,6 +126,7 @@ a:hover {
     display: none; } }
 
 .header nav {
+  z-index: 10;
   position: relative;
   background-color: white;
   padding-top: 1.0625rem;
@@ -103,6 +147,7 @@ a:hover {
     margin-bottom: 5px; }
 
 .header__menu {
+  z-index: 10;
   position: absolute;
   width: calc(100% - 3rem);
   left: 50%;
@@ -147,7 +192,8 @@ a:hover {
   right: 0;
   left: 0;
   bottom: 0px;
-  background-image: linear-gradient(#2d314d, transparent); }
+  background-image: linear-gradient(#2d314d, transparent);
+  z-index: 9; }
 
 .header.open .overlay {
   display: block; }
@@ -160,3 +206,70 @@ a:hover {
 
 .header.open .header__toggle > span:last-child {
   transform: rotate(-45deg); }
+
+.hero {
+  background-color: #f3f4f6; }
+  @media (min-width: 64em) {
+    .hero .container {
+      display: flex;
+      flex-direction: row-reverse;
+      height: 41rem;
+      align-items: center; } }
+  .hero__image {
+    position: relative;
+    background-image: url("../images/bg-intro-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 17.5rem; }
+    @media (min-width: 40em) {
+      .hero__image {
+        min-height: 25rem; } }
+    @media (min-width: 64em) {
+      .hero__image {
+        background-image: none;
+        flex: 1.5;
+        height: 100%; } }
+    @media (min-width: 64em) {
+      .hero__image::before {
+        content: '';
+        position: absolute;
+        width: 150%;
+        height: 100%;
+        background-image: url("../images/bg-intro-desktop.svg");
+        background-position: center bottom;
+        background-size: 122%;
+        background-repeat: no-repeat;
+        background-position: 0% 83%; } }
+    .hero__image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../images/image-mockups.png");
+      background-size: 95%;
+      background-repeat: no-repeat;
+      background-position: center bottom; }
+      @media (min-width: 40em) {
+        .hero__image::after {
+          background-size: 72%;
+          min-height: 25rem; } }
+      @media (min-width: 64em) {
+        .hero__image::after {
+          width: 120%;
+          height: 122%;
+          background-size: 94%;
+          background-position: center 150%;
+          left: 22%; } }
+  .hero__text {
+    text-align: center; }
+    @media (min-width: 64em) {
+      .hero__text {
+        flex: 1;
+        text-align: left; } }
+    .hero__text h1 {
+      margin-bottom: 1.5rem; }
+    .hero__text p {
+      margin-bottom: 2.25rem; }
